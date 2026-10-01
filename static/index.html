@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>ReliefNet – AI Disaster Response &amp; Relief Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css"></head><body>
+<header><a class="logo" href="#home"><i></i>ReliefNet</a>
+<nav id="nav"><a href="#home">Home</a><a href="#dashboard">Live map</a><a href="#report">Report</a><a href="#predict">AI risk</a><a href="#resources">Shelters</a><a href="#volunteer">Volunteer</a><a href="#contact">Contact</a></nav>
+<button class="alt" id="theme" aria-label="Toggle theme">Theme</button></header>
+<main>
+<section class="pg" id="home"><div class="hero"><h1>Faster help when disaster strikes.</h1>
+<p>ReliefNet pulls reports, predicts flood, quake and storm risk, and matches shelters, supplies and volunteers to the people who need them most.</p>
+<div class="row"><a class="btn" href="#report">Report an emergency</a><a class="btn alt" href="#dashboard">Open live map</a><a class="btn alt" href="#predict">Check area risk</a></div></div>
+<div class="grid" id="stats"></div>
+<h2 style="margin-top:30px">What you can do</h2>
+<div class="grid">
+<a class="card" href="#dashboard"><h3>Track incidents</h3>See every active report on a map, sorted by AI-assigned priority.</a>
+<a class="card" href="#predict"><h3>Predict risk</h3>Enter rainfall, river level and seismic readings to get a risk score.</a>
+<a class="card" href="#resources"><h3>Find shelters</h3>Check capacity, food and medical stock before sending people.</a>
+<a class="card" href="#volunteer"><h3>Join the response</h3>Sign up and get assigned to an open incident.</a></div></section>
+
+<section class="pg" id="dashboard"><h2>Live incident map</h2>
+<div class="chips" id="fsev"></div>
+<div class="two"><div class="card"><svg viewBox="0 0 600 360" width="100%" id="map" role="img" aria-label="Incident map">
+<path d="M40 70 Q140 20 260 50 T500 40 Q580 90 560 200 T430 330 Q300 350 170 320 T50 200Z" fill="var(--bg)" stroke="var(--line)" stroke-width="2"/>
+<path d="M120 60 Q200 150 300 170 T520 300" fill="none" stroke="#5aa9e6" stroke-width="4" opacity=".6"/><text x="320" y="150">River</text><g id="dots"></g></svg></div>
+<div class="card" id="detail"><h3>Select an incident</h3><p style="color:var(--mut)">Click a dot on the map or a row in the table.</p></div></div>
+<div class="card tbl" style="margin-top:16px"><table><thead><tr><th>ID</th><th>Type</th><th>Location</th><th>People</th><th>Priority</th><th>Status</th></tr></thead><tbody id="tb"></tbody></table></div></section>
+
+<section class="pg" id="report"><h2>Report an emergency</h2>
+<div class="two"><form class="card" id="rf"><label for="rt">Type</label><select id="rt"><option>Flood</option><option>Earthquake</option><option>Fire</option><option>Cyclone</option><option>Landslide</option></select>
+<label for="rl">Location</label><input id="rl" required placeholder="Area or landmark">
+<label for="rp">People affected</label><input id="rp" type="number" min="1" value="5" required>
+<label for="rd">What is happening?</label><textarea id="rd" rows="4" required placeholder="e.g. Family trapped on first floor, water rising"></textarea>
+<div class="row"><button type="submit">Send report</button><button type="reset" class="alt">Clear</button></div></form>
+<div class="card"><h3>How AI triage works</h3><p style="color:var(--mut)">The system scores each report on people affected and urgent words like trapped, injured, fire, child or collapse. Higher scores go to the top of the queue.</p><p id="triage"></p></div></div></section>
+
+<section class="pg" id="predict"><h2>AI risk predictor</h2>
+<div class="two"><div class="card"><div id="sl"></div><label for="pt">Hazard</label><select id="pt"><option>Flood</option><option>Cyclone</option><option>Earthquake</option></select></div>
+<div class="card"><div class="gauge" id="score">0</div><span class="tag" id="lvl">Low</span><div class="bar"><i id="gb" style="width:0"></i></div><h3 style="margin-top:14px">Recommended actions</h3><ul id="acts"></ul><a class="btn alt" href="#resources">See shelters</a></div></div></section>
+
+<section class="pg" id="resources"><h2>Shelters and supplies</h2>
+<input id="q" placeholder="Search shelter or area…" aria-label="Search shelters"><div class="chips" id="fr"></div><div class="grid" id="sh"></div></section>
+
+<section class="pg" id="volunteer"><h2>Volunteer</h2>
+<div class="two"><form class="card" id="vf"><label for="vn">Name</label><input id="vn" required><label for="vs">Skill</label><select id="vs"><option>Medical</option><option>Rescue</option><option>Logistics</option><option>Cooking</option><option>Counselling</option></select><label for="vi">Assign to incident</label><select id="vi"></select><div class="row"><button>Join response</button></div></form>
+<div class="card"><h3>Team on ground (<span id="vc">0</span>)</h3><div id="vl"></div></div></div></section>
+
+<section class="pg" id="contact"><h2>Emergency contacts</h2>
+<div class="grid"><a class="card" href="tel:112"><h3>112</h3>National emergency number</a><a class="card" href="tel:108"><h3>108</h3>Ambulance</a><a class="card" href="tel:1078"><h3>1078</h3>NDMA disaster helpline</a><a class="card" href="mailto:help@reliefnet.example"><h3>Email us</h3>help@reliefnet.example</a></div>
+<p style="color:var(--mut)">This is a college mini project with sample data. In a real emergency call the numbers above.</p></section>
+</main>
+<footer>ReliefNet – College Mini Project · <a href="#home">Back to home</a></footer>
+<div class="card" id="chat"><h3>Relief assistant</h3><div id="log"><div class="m">Hi! Ask about shelters, reporting, risk, volunteering or helplines.</div></div><input id="ci" placeholder="Type a question, press Enter"></div>
+<button id="fab" aria-label="Open assistant">?</button><div id="toast"></div>
+<script src="js/app.js"></script></body></html>
